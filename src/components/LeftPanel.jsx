@@ -5,8 +5,8 @@ function App() {
 <>
         <div className='flex flex-col items-center'><HiUserCircle size={'60%'} /></div><div></div>
         <div className='flex flex-col items-center'>
-          <HiCog className='' size={'60%'} />
-          <HiOutlineArrowLeftOnRectangle className=' ' size={'60%'} />
+          <HiCog className='cursor-pointer' size={'60%'} />
+          <HiOutlineArrowLeftOnRectangle className='cursor-pointer ' size={'60%'} />
         </div>
         
         </>);

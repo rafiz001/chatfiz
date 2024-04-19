@@ -1,24 +1,18 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { HiCog,HiOutlineArrowLeftOnRectangle } from "react-icons/hi2";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+<div className="grid grid-cols-12 divide-x divide-black">
+  <div className="bg-slate-600 min-h-[100vh] relative" >
+  <HiCog    className='absolute bottom-0 left-0   ' size={70} />
+  <HiOutlineArrowLeftOnRectangle className='absolute bottom-20 left-0   ' size={70} />
+  </div>
+  <div className="col-span-4 bg-slate-600 ">01<br/><br/><br/></div>
+  <div className="col-span-7 bg-gray-800 ">01</div>
+  
+</div>
   );
 }
 

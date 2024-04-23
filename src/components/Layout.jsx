@@ -1,7 +1,7 @@
 import './../App.css';
 import LeftPanel from './LeftPanel';
 import MidPanel from './MidPanel';
-
+import RightPanel from './RightPanel';
 
 function App() {
   return (
@@ -12,7 +12,9 @@ function App() {
       <div className="flex-[6] bg-slate-700 h-[100vh] overflow-y-auto ">
         <MidPanel/>
       </div>
-      <div className="flex-[11] bg-gray-600 ">chat history</div>
+      <div className="flex-[11] bg-gray-600 ">
+        <RightPanel/>
+      </div>
 
     </div>
   );

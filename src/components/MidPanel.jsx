@@ -1,5 +1,5 @@
 import {React, useState, useEffect} from 'react';
-import ContactList from "./partial/ContactList";
+import ContactList from "./partial/midPanel/ContactList";
 export default function(){
     const [selectedContact, setSelectedContact]=useState(0);
 

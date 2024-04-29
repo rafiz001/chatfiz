@@ -1,4 +1,10 @@
+
+
 *{
-  scrollbar-color: rgb(75 85 99) transparent;
+
   scrollbar-width: none;
+}
+.with-scroll{
+  scrollbar-color: rgb(181, 212, 255) transparent; 
+  scrollbar-width: auto;
 }

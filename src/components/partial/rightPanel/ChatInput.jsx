@@ -1,8 +1,9 @@
-import {React, useState, useEffect, useRef} from 'react';
+import {React, useState, useEffect, useRef, useFocus} from 'react';
 import {  HiArrowUpCircle } from "react-icons/hi2";
 
 export default function({chats,setChats}){
     const textarea=useRef();
+    
     function addMessage() {
       if(textarea.current.value=="")return;
       var text=textarea.current.value;
@@ -16,6 +17,7 @@ export default function({chats,setChats}){
         }
         ])
         textarea.current.value="";
+        
     }
 
     /*setInterval(function () {

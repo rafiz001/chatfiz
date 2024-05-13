@@ -15,12 +15,16 @@ const LoginDialogue = ({user,setUser}) => {
         
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({'email': 'rafiz001@chatfiz.com','password':'rafizuddin'})
+      body: JSON.stringify({'email': userName,'password':password})
     
     });
 let resp=await respRaw.json();
- console.log(resp);
-
+ console.log(resp.message);
+if(resp.message=="success")setUser({
+  status:true,
+  email:resp.data.email,
+  name:resp.data.name
+})
   }
   catch (err){
     console.log(err);

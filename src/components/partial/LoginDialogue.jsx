@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 const LoginDialogue = ({user,setUser}) => {
 
@@ -7,7 +9,7 @@ const LoginDialogue = ({user,setUser}) => {
   async function formSubmitter() {
     console.log(userName,password);
     try{
-   let  respRaw= await fetch("http://localhost:8000/api/login",  {
+   let  respRaw= await fetch("https://chatfiz-express.onrender.com/api/login",  {
        method: 'POST',
        
       headers: {
@@ -20,21 +22,30 @@ const LoginDialogue = ({user,setUser}) => {
     });
 let resp=await respRaw.json();
  console.log(resp.message);
-if(resp.message=="success")setUser({
-  status:true,
-  email:resp.data.email,
-  name:resp.data.name
-})
+if(resp.message=="success"){
+  const userD={
+    status:true,
+    email:resp.data.email,
+    name:resp.data.name
+  };
+  setUser(userD);
+  localStorage.setItem('user', JSON.stringify(userD));
+
+toast("Welcome "+resp.data.name);
+}
+else{
+  toast("Wrong credential. Please Try aggain...");
+}
   }
   catch (err){
-    console.log(err);
+    toast("API error.");
   }
 
   }
   return (
     <>
 
-
+<ToastContainer theme="dark" />  
 <dialog id="my_modal_1" className="modal" >
   <div className="modal-box">
     <h3 className="font-bold text-lg">Login Here</h3>

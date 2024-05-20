@@ -1,15 +1,16 @@
 import { React, useState } from 'react';
 import { HiUserCircle } from "react-icons/hi2";
 
-export default function ({ chats }) {
-    const id = 123456;
+
+export default function ({ chats, user }) {
+   
     let a = [];
 
     chats.forEach((i, y) => {
         let self = false;
-        if (id == i.from) self = true;
+        if (user.email == i.from) self = true;
         a.push(<div className={`chat ${self ? 'chat-end' : 'chat-start'}`}>
-            <div className={`chat-bubble text-white bg-slate-800`}>{i.text} {y}</div>
+            <div className={`chat-bubble text-white bg-slate-800`}>{i.text}</div>
             {i.status=="sending"?<div className="chat-footer opacity-50">Sending...</div>:''}
         </div>);
     });

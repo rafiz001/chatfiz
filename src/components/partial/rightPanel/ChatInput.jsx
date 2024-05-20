@@ -1,16 +1,25 @@
 import {React, useState, useEffect, useRef, useFocus} from 'react';
 import {  HiArrowUpCircle } from "react-icons/hi2";
 
-export default function({chats,setChats}){
+export default function({chats,setChats, user, to,setChatRefresh}){
     const textarea=useRef();
     
     function addMessage() {
       if(textarea.current.value=="")return;
       var text=textarea.current.value;
       
+      fetch("http://localhost:8000/api/addChat",  {
+        method: 'POST',
+       headers: {
+         'Content-Type': 'application/json'
+       },
+       body: JSON.stringify({'from': user.email,'to':to, 'text': text , 'time': new Date().getTime})
+     
+     }).then((x)=>x.json()).then((y)=>setChatRefresh(true))
+
         setChats([...chats,{        
-            from:123456,
-            to:789101,
+            from:user.email,
+            to:to,
             text:text,
             time:new Date().getTime,
             status:"sending",

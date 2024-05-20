@@ -1,7 +1,7 @@
 import {React, useState, useEffect, useRef} from 'react';
 import {  HiUserCircle,HiArrowLeft } from "react-icons/hi2";
 
-export default function(){
+export default function({to}){
 
   
     return (<div  className="border-b border-black   text-white flex relative ">
@@ -10,7 +10,7 @@ export default function(){
         <div className={` w-[100%] `}>
             
         <div className='flex flex-row justify-between  '>
-            <div className='flex flex-col'>Rafiz Uddin
+            <div className='flex flex-col'>{to}
             <i className='text-sm'>Active at 29 April 6:47AM</i>
                 </div>
                 

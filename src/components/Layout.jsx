@@ -4,6 +4,9 @@ import LeftPanel from './LeftPanel';
 import MidPanel from './MidPanel';
 import RightPanel from './RightPanel';
 import LoginDialogue from './partial/LoginDialogue';
+import { Routes, Route } from "react-router-dom";
+
+import { ToastContainer, toast } from 'react-toastify';
 
 /*
 useEffect(() => {
@@ -35,7 +38,10 @@ function App() {
   
   
   return (
+    <>
+        <ToastContainer theme="dark" /> 
     <div className="flex flex-row  bg-gray-600">
+      
       <div className="hidden sm:flex flex-[1]  bg-slate-800 h-[100vh]   flex-col justify-between" >
   
        <LeftPanel user={user} setUser={setUser}/> 
@@ -44,10 +50,15 @@ function App() {
         <MidPanel user={user} />
       </div>
       <div className="flex-[11] bg-gray-600 ">
-<LoginDialogue user={user} setUser={setUser} />
-        <RightPanel/>
+        <LoginDialogue user={user} setUser={setUser} />
+        <Routes>
+      <Route path="/" element={<div className='text-center'>Welcome to chatFiz.</div>} />
+      <Route path="/:id" element={<RightPanel user={user} setUser={setUser}/>}  />
+    </Routes>
+        
       </div>
     </div>
+    </>
   );
 }
 

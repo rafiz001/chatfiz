@@ -2,7 +2,7 @@ import {React, useState, useEffect, useRef} from 'react';
 import ContactList from "./partial/midPanel/ContactList";
 import { HiMiniPlus } from "react-icons/hi2";
 
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 export default function({user}){
@@ -30,7 +30,7 @@ export default function({user}){
          
     useEffect(()=>{
         let contactss="";
-       user.email &&  fetch("https://chatfiz-express.onrender.com/api/getConnection/"+user.email).then((x)=>x.json()).then((y)=>{ 
+       user.email &&  fetch("http://localhost:8000/api/getConnection/"+user.email).then((x)=>x.json()).then((y)=>{ 
        
       try{y.data.forEach((value)=>{
         setContacts(y.data);
@@ -45,7 +45,7 @@ export default function({user}){
     },[user])
 
     return (<>
-    <ToastContainer theme="dark" />  
+    
     <div onClick={()=>connectionBarToggler()} className='cursor-pointer rounded-full flex justify-center border border-black  text-white'><HiMiniPlus size={25}/> Connect A User</div>
     <div className={`${!connectionBar?'hidden':' '} duration-500 transition-all`}>
     <div className=' flex justify-center'><input ref={to} className='bg-transparent outline-none w-[90%] rounded-full p-2 m-2 border border-black' type='email' placeholder='Enter email'/></div>
@@ -53,7 +53,7 @@ export default function({user}){
     </div>
 
 
-        {contacts?.map((value)=><ContactList  user={value.user2} selected={selectedContact} setSelectedContact={setSelectedContact}/>)}
+        {contacts?.map((value)=><ContactList  user={value.user2}  selected={selectedContact} setSelectedContact={setSelectedContact}/>)}
     
     
     </>);
